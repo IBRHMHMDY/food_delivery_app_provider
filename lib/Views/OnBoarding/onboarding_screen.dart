@@ -111,7 +111,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     MaterialButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(builder: (context) => HomeScreen()),
                         );
