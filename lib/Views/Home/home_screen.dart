@@ -21,13 +21,13 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Topbar(),
-              SizedBox(height: 50),
+              SizedBox(height: 20),
               TitleBar(),
               SizedBox(height: 20),
               HeaderSection(),
               SizedBox(height: 15),
               ListViewCategories(categories: categories),
-              SizedBox(height: 15),
+              SizedBox(height: 25),
               Text(
                 "Result(40)",
                 style: TextStyle(
@@ -36,7 +36,6 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 15),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 physics: BouncingScrollPhysics(),
@@ -44,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                   children: List.generate(
                     products.length,
                     (index) => Padding(
-                      padding: index == 0 ? EdgeInsets.only(left: 25,right: 25): EdgeInsets.only(right: 25),
+                      padding: index == 0 ? EdgeInsets.only(left: 10,right: 20): EdgeInsets.only(right: 25),
                       child: ProductCard(products: products,index: index,),
                     ),
                   ),

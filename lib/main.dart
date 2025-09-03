@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:food_delivery_app_provider/Views/OnBoarding/onboarding_screen.dart';
+import 'package:food_delivery_app_provider/Views/app_screens.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // تفعيل وضع ملء الشاشة
+  // Full Screen when start App
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,
     overlays: [SystemUiOverlay.top],
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food Delivery App',
-      home: OnboardingScreen(),
+      home: AppScreens(),
     );
   }
 }

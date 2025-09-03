@@ -2,10 +2,10 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_provider/Core/constants.dart';
 import 'package:food_delivery_app_provider/Models/onboard_model.dart';
-import 'package:food_delivery_app_provider/Views/Home/home_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  const OnboardingScreen({super.key});
+  final VoidCallback onFinish;
+  const OnboardingScreen({super.key, required this.onFinish});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();
@@ -110,12 +110,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Row(
                   children: [
                     MaterialButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
-                      },
+                      onPressed: widget.onFinish,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadiusGeometry.circular(15),
                       ),
