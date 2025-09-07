@@ -3,21 +3,33 @@ import 'package:flutter/material.dart';
 
 class BottomIcon {
   final IconData selected, unselected;
-  BottomIcon({required this.selected, required this.unselected});
+  final String label;
+  BottomIcon({
+    required this.selected,
+    required this.unselected,
+    required this.label,
+  });
 }
 
 List<BottomIcon> bottomIcons = [
-  BottomIcon(selected: Icons.home_filled, unselected: Icons.home_outlined),
+  BottomIcon(
+    selected: Icons.home,
+    unselected: Icons.home_outlined,
+    label: "Home",
+  ),
   BottomIcon(
     selected: CupertinoIcons.chat_bubble_text_fill,
     unselected: CupertinoIcons.chat_bubble_text,
+    label: "Chats",
   ),
   BottomIcon(
     selected: CupertinoIcons.compass_fill,
     unselected: CupertinoIcons.compass,
+    label: "Stat",
   ),
   BottomIcon(
     selected: Icons.person_rounded,
     unselected: Icons.person_outline_rounded,
+    label: "Profile",
   ),
 ];

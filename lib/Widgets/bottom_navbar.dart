@@ -20,9 +20,9 @@ class _BottomNavbarState extends State<BottomNavbar> {
   Widget build(BuildContext context) {
     return BottomAppBar(
       elevation: 5,
-      height: 85,
+      height: 75,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,27 +33,36 @@ class _BottomNavbarState extends State<BottomNavbar> {
                 onTap: () {
                   widget.onTap(index);
                 },
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10),
-                  child: Column(
-                    children: [
-                      Icon(
-                        widget.currentIndex == index
-                            ? bottomIcons[index].selected
-                            : bottomIcons[index].unselected,
-                        color: kblack,
+                child: Column(
+                  children: [
+                    Icon(
+                      widget.currentIndex == index
+                          ? bottomIcons[index].selected
+                          : bottomIcons[index].unselected,
+                      color: kblack,
+                    ),
+                    AnimatedContainer(
+                      duration: Duration(milliseconds: 200),
+                      decoration: BoxDecoration(
+                        color: Colors.black12,
+                        borderRadius: BorderRadius.circular(15),
                       ),
-                      const SizedBox(height: 10),
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: kblack,
-                          shape: BoxShape.circle,
-                        ),
-                        width: widget.currentIndex == index ? 7 : 0,
-                        height: widget.currentIndex == index ? 7 : 0,
-                      ),
-                    ],
-                  ),
+                      width: widget.currentIndex == index ? 60 : 0,
+                      height: widget.currentIndex == index ? 20 : 0,
+                      child: widget.currentIndex == index
+                          ? Center(
+                              child: Text(
+                                bottomIcons[index].label,
+                                style: TextStyle(
+                                  color: kblack,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                            )
+                          : Text(""),
+                    ),
+                  ],
                 ),
               ),
             ),

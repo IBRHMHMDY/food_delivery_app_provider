@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_delivery_app_provider/Core/constants.dart';
 import 'package:food_delivery_app_provider/Models/category_model.dart';
 import 'package:food_delivery_app_provider/Models/product_model.dart';
@@ -8,8 +9,23 @@ import 'package:food_delivery_app_provider/Views/Home/Widgets/product_card.dart'
 import 'package:food_delivery_app_provider/Views/Home/Widgets/titlebar.dart';
 import 'package:food_delivery_app_provider/Views/Home/Widgets/topbar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // إرجاع الواجهة للوضع الطبيعي
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: SystemUiOverlay.values, // status & navigation يرجعوا
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +37,9 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Topbar(),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               TitleBar(),
-              SizedBox(height: 20),
+              SizedBox(height: 15),
               HeaderSection(),
               SizedBox(height: 15),
               ListViewCategories(categories: categories),
