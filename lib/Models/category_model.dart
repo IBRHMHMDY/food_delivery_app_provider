@@ -7,6 +7,10 @@ class CategoryModel {
 List<CategoryModel> categories = [
   CategoryModel(
     image: 'assets/images/ramen.png',
+    name: 'All',
+  ),
+  CategoryModel(
+    image: 'assets/images/ramen.png',
     name: 'Ramen',
   ),
   CategoryModel(

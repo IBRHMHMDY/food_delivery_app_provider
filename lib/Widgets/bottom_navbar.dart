@@ -19,6 +19,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      color: Colors.black,
       elevation: 5,
       height: 75,
       child: Padding(
@@ -34,34 +35,33 @@ class _BottomNavbarState extends State<BottomNavbar> {
                   widget.onTap(index);
                 },
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(
                       widget.currentIndex == index
                           ? bottomIcons[index].selected
                           : bottomIcons[index].unselected,
-                      color: kblack,
+                      color: widget.currentIndex == index ? korange : Colors.grey.shade600,
+                      size: bottomIcons[index].size,
                     ),
-                    AnimatedContainer(
-                      duration: Duration(milliseconds: 200),
-                      decoration: BoxDecoration(
-                        color: Colors.black12,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      width: widget.currentIndex == index ? 60 : 0,
-                      height: widget.currentIndex == index ? 20 : 0,
-                      child: widget.currentIndex == index
-                          ? Center(
+                    SizedBox(height: 3),
+                    widget.currentIndex == index
+                        ? AnimatedOpacity(
+                            duration: Duration(milliseconds: 200),
+                            opacity: widget.currentIndex == index ? 1 : 0,
+                            child: Center(
                               child: Text(
                                 bottomIcons[index].label,
                                 style: TextStyle(
-                                  color: kblack,
+                                  color: korange,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w900,
                                 ),
                               ),
-                            )
-                          : Text(""),
-                    ),
+                            ),
+                          )
+                        : Container(),
                   ],
                 ),
               ),

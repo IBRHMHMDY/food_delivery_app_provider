@@ -17,6 +17,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String category = "";
+  List<ProductModel> productsCategory = [];
   @override
   void initState() {
     super.initState();
@@ -25,6 +27,27 @@ class _HomeScreenState extends State<HomeScreen> {
       SystemUiMode.manual,
       overlays: SystemUiOverlay.values, // status & navigation يرجعوا
     );
+    if (categories.isNotEmpty) {
+      category = categories[0].name;
+      filterProductByCategory(category);
+    }
+  }
+
+  filterProductByCategory(String selectedCategory) {
+    setState(() {
+      category = selectedCategory;
+      if (categories[0].name == selectedCategory) {
+        productsCategory = productsDemo;
+      } else {
+        productsCategory = productsDemo
+            .where(
+              (product) =>
+                  product.category.toLowerCase() ==
+                  selectedCategory.toLowerCase(),
+            )
+            .toList();
+      }
+    });
   }
 
   @override
@@ -42,10 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 15),
               HeaderSection(),
               SizedBox(height: 15),
-              ListViewCategories(categories: categories),
+              ListViewCategories(
+                categories: categories,
+                onSelectedCategory: (category) {
+                  filterProductByCategory(category);
+                },
+              ),
               SizedBox(height: 25),
               Text(
-                "Result(40)",
+                category != "All"
+                    ? "Results: ${productsCategory.length}"
+                    : "All Products",
                 style: TextStyle(
                   color: kblack,
                   fontSize: 16,
@@ -57,10 +87,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 physics: BouncingScrollPhysics(),
                 child: Row(
                   children: List.generate(
-                    products.length,
+                    productsCategory.length,
                     (index) => Padding(
-                      padding: index == 0 ? EdgeInsets.only(left: 10,right: 20): EdgeInsets.only(right: 25),
-                      child: ProductCard(products: products,index: index,),
+                      padding: index == 0
+                          ? EdgeInsets.only(left: 10, right: 20)
+                          : EdgeInsets.only(right: 25),
+                      child: ProductCard(
+                        products: productsCategory,
+                        index: index,
+                      ),
                     ),
                   ),
                 ),

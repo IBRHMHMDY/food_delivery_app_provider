@@ -12,7 +12,7 @@ class ProductModel {
   });
 }
 
-List<ProductModel> products = [
+List<ProductModel> productsDemo = [
   ProductModel(
     image: 'assets/images/ramen/sapporo_miso_ramen.png',
     title: 'Sapporo Miso',

@@ -4,7 +4,8 @@ import 'package:food_delivery_app_provider/Models/category_model.dart';
 
 class ListViewCategories extends StatefulWidget {
   final List<CategoryModel> categories;
-  const ListViewCategories({super.key, required this.categories});
+  final Function(String) onSelectedCategory;
+  const ListViewCategories({super.key, required this.categories, required this.onSelectedCategory});
 
   @override
   State<ListViewCategories> createState() => _ListViewCategoriesState();
@@ -34,9 +35,11 @@ class _ListViewCategoriesState extends State<ListViewCategories> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: GestureDetector(
-                onTap: ()=>setState(() {
+                onTap: (){setState(() {
                   currentIndex = index;
-                }),
+                });
+                widget.onSelectedCategory(category.name);
+                },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,

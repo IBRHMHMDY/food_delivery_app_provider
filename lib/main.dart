@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_provider/Controllers/cart_controller.dart';
+import 'package:food_delivery_app_provider/Controllers/categories_controller.dart';
 import 'package:food_delivery_app_provider/Views/app_screens.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (create)=> CartController())
+        ChangeNotifierProvider(create: (create)=> CartController()),
+        ChangeNotifierProvider(create: (create)=> CategoriesController())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

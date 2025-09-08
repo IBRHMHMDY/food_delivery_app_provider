@@ -17,6 +17,7 @@ class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    ProductModel product = widget.products[widget.index];
     return Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
@@ -61,13 +62,13 @@ class _ProductCardState extends State<ProductCard> {
                             ),
                           ),
                         ),
-                        Image.asset(products[widget.index].image),
+                        Image.asset(product.image),
                       ],
                     ),
                   ),
                 ),
                 Text(
-                  products[widget.index].title,
+                  product.title,
                   style: TextStyle(
                     color: kblack,
                     fontWeight: FontWeight.bold,
@@ -81,14 +82,14 @@ class _ProductCardState extends State<ProductCard> {
                     Row(
                       children: [
                         Icon(Icons.star, color: kyellow, size: 14),
-                        Text(products[widget.index].rate.toString()),
+                        Text(product.rate.toString()),
                       ],
                     ),
                     SizedBox(width: 10),
                     Row(
                       children: [
                         Icon(Icons.location_on, color: kpink, size: 14),
-                        Text(products[widget.index].distance.toString()),
+                        Text(product.distance.toString()),
                       ],
                     ),
                   ],
@@ -98,7 +99,7 @@ class _ProductCardState extends State<ProductCard> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "\$${products[widget.index].price.toStringAsFixed(2)}",
+                      "\$${product.price.toStringAsFixed(2)}",
                       style: TextStyle(
                         color: kblack,
                         fontSize: 16,
@@ -111,6 +112,7 @@ class _ProductCardState extends State<ProductCard> {
             ),
           ),
         ),
+        // Button Shopping Cart
         Positioned(
           bottom: 0,
           right: 0,
