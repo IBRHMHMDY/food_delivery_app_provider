@@ -23,9 +23,9 @@ List<BottomIcon> bottomIcons = [
     
   ),
   BottomIcon(
-    selected: CupertinoIcons.chat_bubble_text_fill,
-    unselected: CupertinoIcons.chat_bubble_text,
-    label: "Chats",
+    selected: Icons.shopping_cart,
+    unselected: Icons.shopping_cart_outlined,
+    label: "MyCart",
   ),
   BottomIcon(
     selected: CupertinoIcons.compass_fill,

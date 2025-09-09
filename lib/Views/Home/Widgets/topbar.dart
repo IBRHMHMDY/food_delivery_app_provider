@@ -1,14 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app_provider/Controllers/cart_controller.dart';
 import 'package:food_delivery_app_provider/Core/constants.dart';
+import 'package:food_delivery_app_provider/Core/routes.dart';
+import 'package:provider/provider.dart';
 
 class Topbar extends StatelessWidget {
-  const Topbar({
-    super.key,
-  });
+  const Topbar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CartController carts = Provider.of<CartController>(context);
     return Row(
       children: [
         Column(
@@ -34,17 +35,10 @@ class Topbar extends StatelessWidget {
             SizedBox(height: 5),
             Row(
               children: [
-                Icon(
-                  Icons.location_on,
-                  size: 20,
-                  color: kyellow,
-                ),
+                Icon(Icons.location_on, size: 20, color: kyellow),
                 Text(
                   "Tokyo,Japan",
-                  style: TextStyle(
-                    color: kblack,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(color: kblack, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -59,10 +53,7 @@ class Topbar extends StatelessWidget {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.black12,
-                    width: 1.5,
-                  ),
+                  border: Border.all(color: Colors.black12, width: 1.5),
                   borderRadius: BorderRadius.horizontal(
                     left: Radius.circular(8),
                     right: Radius.circular(8),
@@ -80,12 +71,11 @@ class Topbar extends StatelessWidget {
             Stack(
               children: [
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoutes.cart);
+                  },
                   child: Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: 5,
-                      horizontal: 5,
-                    ),
+                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                     height: 30,
                     width: 30,
                     decoration: BoxDecoration(
@@ -115,7 +105,7 @@ class Topbar extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: Text(
-                      "3",
+                      carts.carts.length.toString(),
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12,

@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app_provider/Controllers/cart_controller.dart';
 import 'package:food_delivery_app_provider/Core/constants.dart';
 import 'package:food_delivery_app_provider/Models/product_model.dart';
+import 'package:provider/provider.dart';
 
 class ProductCard extends StatefulWidget {
   final List<ProductModel> products;
@@ -16,6 +18,7 @@ class ProductCard extends StatefulWidget {
 class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
+  CartController carts = Provider.of<CartController>(context);
     Size size = MediaQuery.of(context).size;
     ProductModel product = widget.products[widget.index];
     return Stack(
@@ -119,12 +122,12 @@ class _ProductCardState extends State<ProductCard> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                
+                carts.addCart(product);
               });
             },
             child: Container(
-              height: 30,
-              width: 40,
+              height: 40,
+              width: 50,
               decoration: BoxDecoration(
                 color: kblack,
                 borderRadius: BorderRadius.only(
@@ -133,9 +136,9 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ),
               child: Icon(
-                Icons.shopping_cart_outlined,
-                size: 16,
-                color: Colors.white,
+                 carts.productExist(product) ? Icons.add_shopping_cart : Icons.shopping_cart_outlined,
+                size: 22,
+                color: carts.productExist(product) ? kyellow :Colors.white,
               ),
             ),
           ),

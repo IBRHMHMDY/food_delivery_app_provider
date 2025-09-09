@@ -74,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: 25),
               Text(
                 category != "All"
-                    ? "Results: ${productsCategory.length}"
-                    : "All Products",
+                    ? "Results: (${productsCategory.length})"
+                    : "All Products (${productsCategory.length})",
                 style: TextStyle(
                   color: kblack,
                   fontSize: 16,

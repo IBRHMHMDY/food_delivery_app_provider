@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app_provider/Core/constants.dart';
+import 'package:food_delivery_app_provider/Views/Cart/cart_screen.dart';
 import 'package:food_delivery_app_provider/Views/Home/home_screen.dart';
 import 'package:food_delivery_app_provider/Views/OnBoarding/onboarding_screen.dart';
 import 'package:food_delivery_app_provider/Widgets/bottom_navbar.dart';
@@ -13,7 +14,7 @@ class AppScreens extends StatefulWidget {
 
 class _AppScreensState extends State<AppScreens> {
   int currentIndex = -1;
-  List<Widget> screens = [HomeScreen(), Scaffold(), Scaffold(), Scaffold()];
+  List<Widget> screens = [HomeScreen(), CartScreen(), Scaffold(), Scaffold()];
 
   @override
   Widget build(BuildContext context) {
