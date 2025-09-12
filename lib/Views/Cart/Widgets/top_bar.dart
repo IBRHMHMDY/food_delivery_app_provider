@@ -11,7 +11,7 @@ class TopBar extends StatelessWidget {
     return Row(
       children: [
         GestureDetector(
-          onTap: () => Navigator.popAndPushNamed(context, AppRoutes.home),
+          onTap: () => Navigator.pushNamed(context, AppRoutes.home),
           child: Container(
             height: 45,
             width: 45,
